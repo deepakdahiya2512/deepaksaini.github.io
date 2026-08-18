@@ -3,135 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mera Naya Blog - Jankari aur Kamai</title>
+    <title>Premium Hub - Knowledge & Creativity</title>
     <style>
-        /* Website ka Design (CSS) */
+        /* Modern Design CSS */
+        :root {
+            --primary-color: #2563eb;
+            --dark-color: #1e293b;
+            --bg-color: #f8fafc;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
+            background-color: var(--bg-color);
             color: #333;
         }
-        header {
-            background-color: #1a73e8;
-            color: #ffffff;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        header h1 { margin: 0; font-size: 2.5em; }
-        header p { margin: 5px 0 0 0; font-size: 1.1em; }
-        
-        .container {
+        /* Stylish Navbar */
+        nav {
+            background-color: white;
+            padding: 15px 50px;
             display: flex;
-            flex-wrap: wrap;
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 0 15px;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        
-        /* Main Content Area */
-        .main-content {
-            flex: 3;
-            background: #ffffff;
-            padding: 20px;
-            margin-right: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .post {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
-        .post:last-child { border-bottom: none; }
-        .post h2 { color: #1a73e8; margin-top: 0; }
-        .read-more {
-            background-color: #1a73e8;
+        .logo { font-size: 24px; font-weight: bold; color: var(--primary-color); }
+        .login-btn {
+            background-color: var(--dark-color);
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+            transition: 0.3s;
         }
-        .read-more:hover { background-color: #1557b0; }
-
-        /* Sidebar & Ad Area */
-        .sidebar {
-            flex: 1;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            min-width: 250px;
-        }
-        .ad-space {
-            background-color: #e9ecef;
-            border: 2px dashed #adb5bd;
-            padding: 60px 10px;
-            margin-top: 20px;
-            text-align: center;
-            color: #6c757d;
-            font-weight: bold;
-            border-radius: 4px;
-        }
+        .login-btn:hover { background-color: var(--primary-color); }
         
-        footer {
-            background-color: #333;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
             color: white;
             text-align: center;
-            padding: 15px;
-            margin-top: 30px;
+            padding: 80px 20px;
+        }
+        .hero h1 { font-size: 3em; margin-bottom: 10px; }
+        
+        /* Main Layout */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            gap: 30px;
+        }
+        .content { flex: 3; }
+        .sidebar { flex: 1; }
+        
+        /* Article Cards */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h2 { color: var(--dark-color); margin-top: 0; }
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .container { flex-direction: column; }
-            .main-content { margin-right: 0; margin-bottom: 20px; }
+        /* Premium Ad Space */
+        .ad-space {
+            background: linear-gradient(to right, #fef08a, #fde047);
+            border: 1px solid #eab308;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #854d0e;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Login Modal (Popup) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        .modal-content input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .close-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Mera Awesome Blog</h1>
-        <p>Aapki har sawal ka jawab yahan milega!</p>
-    </header>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">PremiumHub</div>
+        <button class="login-btn" onclick="openLogin()">Login / Register</button>
+    </nav>
 
+    <!-- Header Section -->
+    <div class="hero">
+        <h1>Welcome to the Next Level</h1>
+        <p>Aapki creativity aur knowledge ka naya ghar.</p>
+    </div>
+
+    <!-- Main Content and Sidebar -->
     <div class="container">
-        <!-- Ye aapke articles ki jagah hai -->
-        <div class="main-content">
-            <div class="post">
-                <h2>Pehla Kadam: Online Paise Kaise Kamaye?</h2>
-                <p>Dosto, internet se paise kamane ke liye sabse zaroori hai ek achhi website aur quality content. Agar aap lagatar mehnat karte hain, toh success zaroor milti hai...</p>
-                <button class="read-more">Pura Padhein</button>
-            </div>
+        <div class="content">
             
-            <div class="post">
-                <h2>Top 5 Tarike Website Par Traffic Lane Ke</h2>
-                <p>Website bana lena hi kaafi nahi hota. Us par logo ko lana (traffic) sabse bada task hai. Aaj hum sikhenge Social media ka use karke traffic kaise layein...</p>
-                <button class="read-more">Pura Padhein</button>
+            <!-- Article 1 -->
+            <div class="card">
+                <h2>1/7 Scale Figurine: Shuruwat Kaise Karein?</h2>
+                <p>Kya aapne kabhi socha hai ki market mein milne wale detailed 3D figurines kaise banaye jate hain? Is guide mein hum base structure se lekar final detailing tak sab samjhenge...</p>
+                <a href="#" class="read-more">Pura Padhein ➔</a>
             </div>
+
+            <!-- Ad Space in between articles -->
+            <div class="ad-space">
+                [ SPONSORED ADVERTISEMENT ]<br>
+                <small>Premium Tools & Courses yahan dikhenge</small>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="card">
+                <h2>ZBrush Modeling Process ke Secret Tips</h2>
+                <p>Digital sculpting duniya mein ZBrush ek magic tool hai. Aaj hum baat karenge kuch aisi brushes aur techniques ki jo aapke model ko ekdum realistic look de sakti hain...</p>
+                <a href="#" class="read-more">Pura Padhein ➔</a>
+            </div>
+
         </div>
 
-        <!-- Ye Sidebar hai jahan aapke Ads aayenge -->
         <div class="sidebar">
-            <h3>Mere Baare Mein</h3>
-            <p>Bhai, mera naam hai aur main yahan naye-naye tips aur tricks share karta hu.</p>
+            <!-- Sidebar Ad Space -->
+            <div class="ad-space" style="padding: 100px 20px;">
+                [ SIDEBAR AD ]<br>
+                <small>High CPC Ads Placement</small>
+            </div>
             
-            <!-- Yahan Google AdSense ka code lagana hoga jab aapki kamai shuru hogi -->
-            <div class="ad-space">
-                ADVERTISEMENT AREA<br>
-                <small>(Yahan par aapke Google Ads aayenge aur paise banenge)</small>
+            <div class="card">
+                <h3>Trending Topics</h3>
+                <ul style="padding-left: 15px;">
+                    <li>3D Printing Basics</li>
+                    <li>Digital Sculpting</li>
+                    <li>Making Money Online</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <footer>
-        &copy; 2026 Mera Awesome Blog. All rights reserved.
-    </footer>
+    <!-- Login Popup Window -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <h2>Member Login</h2>
+            <p>Welcome back, creator!</p>
+            <input type="email" placeholder="Email Address">
+            <input type="password" placeholder="Password">
+            <button class="login-btn" style="width: 100%;">Login Now</button>
+            <button class="close-btn" onclick="closeLogin()">Close</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Login Popup -->
+    <script>
+        function openLogin() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+        function closeLogin() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
