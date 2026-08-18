@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mera Naya Blog - Jankari aur Kamai</title>
+    <style>
+        /* Website ka Design (CSS) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        header {
+            background-color: #1a73e8;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 { margin: 0; font-size: 2.5em; }
+        header p { margin: 5px 0 0 0; font-size: 1.1em; }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            flex: 3;
+            background: #ffffff;
+            padding: 20px;
+            margin-right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .post {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .post:last-child { border-bottom: none; }
+        .post h2 { color: #1a73e8; margin-top: 0; }
+        .read-more {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .read-more:hover { background-color: #1557b0; }
+
+        /* Sidebar & Ad Area */
+        .sidebar {
+            flex: 1;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            min-width: 250px;
+        }
+        .ad-space {
+            background-color: #e9ecef;
+            border: 2px dashed #adb5bd;
+            padding: 60px 10px;
+            margin-top: 20px;
+            text-align: center;
+            color: #6c757d;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .main-content { margin-right: 0; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Mera Awesome Blog</h1>
+        <p>Aapki har sawal ka jawab yahan milega!</p>
+    </header>
+
+    <div class="container">
+        <!-- Ye aapke articles ki jagah hai -->
+        <div class="main-content">
+            <div class="post">
+                <h2>Pehla Kadam: Online Paise Kaise Kamaye?</h2>
+                <p>Dosto, internet se paise kamane ke liye sabse zaroori hai ek achhi website aur quality content. Agar aap lagatar mehnat karte hain, toh success zaroor milti hai...</p>
+                <button class="read-more">Pura Padhein</button>
+            </div>
+            
+            <div class="post">
+                <h2>Top 5 Tarike Website Par Traffic Lane Ke</h2>
+                <p>Website bana lena hi kaafi nahi hota. Us par logo ko lana (traffic) sabse bada task hai. Aaj hum sikhenge Social media ka use karke traffic kaise layein...</p>
+                <button class="read-more">Pura Padhein</button>
+            </div>
+        </div>
+
+        <!-- Ye Sidebar hai jahan aapke Ads aayenge -->
+        <div class="sidebar">
+            <h3>Mere Baare Mein</h3>
+            <p>Bhai, mera naam hai aur main yahan naye-naye tips aur tricks share karta hu.</p>
+            
+            <!-- Yahan Google AdSense ka code lagana hoga jab aapki kamai shuru hogi -->
+            <div class="ad-space">
+                ADVERTISEMENT AREA<br>
+                <small>(Yahan par aapke Google Ads aayenge aur paise banenge)</small>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Mera Awesome Blog. All rights reserved.
+    </footer>
+
+</body>
+</html>
