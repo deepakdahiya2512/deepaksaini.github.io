@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Sculpt & Design Hub | The Ultimate Guide</title>
+    <title>Pro Sculpt & Design Hub | Complete Working Site</title>
     <style>
-        /* Mega Website Premium Design */
         :root {
             --primary: #2563eb;
             --dark: #0f172a;
@@ -19,189 +18,211 @@
             color: #333;
         }
         
-        /* Top Header & Nav */
-        header { background: var(--dark); color: white; padding: 15px 0; }
+        /* Header & Nav */
+        header { background: var(--dark); color: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
         .nav-container {
             max-width: 1200px; margin: 0 auto; display: flex;
             justify-content: space-between; align-items: center; padding: 0 20px;
         }
-        .logo { font-size: 28px; font-weight: 800; color: #60a5fa; }
+        .logo { font-size: 28px; font-weight: 800; color: #60a5fa; cursor: pointer; }
         nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 20px; }
-        nav ul li a { color: white; text-decoration: none; font-weight: 500; }
+        nav ul li a { color: white; text-decoration: none; font-weight: 500; cursor: pointer; transition: 0.3s; }
         nav ul li a:hover { color: #60a5fa; }
 
-        /* Leaderboard Ad (Top Ad) */
-        .top-ad-container {
-            max-width: 970px; height: 90px; margin: 20px auto;
+        /* Ads */
+        .ad-container {
             background: #e2e8f0; border: 2px dashed #cbd5e1;
             display: flex; justify-content: center; align-items: center;
-            color: var(--gray); font-weight: bold; text-align: center;
+            color: var(--gray); font-weight: bold; text-align: center; margin-bottom: 20px;
         }
+        .top-ad { max-width: 970px; height: 90px; margin: 20px auto; }
+        .in-article-ad { padding: 30px; background: #fef08a; border-color: #eab308; color: #ca8a04; }
 
-        /* Hero Banner */
+        /* Hero */
         .hero {
-            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop') center/cover;
-            height: 400px; display: flex; align-items: center; justify-content: center;
-            text-align: center; color: white; position: relative;
+            background: linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.8)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop') center/cover;
+            height: 350px; display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white;
         }
-        .hero-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.7);
-        }
-        .hero-content { position: relative; z-index: 1; max-width: 800px; padding: 20px; }
-        .hero-content h1 { font-size: 3.5em; margin: 0 0 15px 0; }
-        
-        /* Main Grid Layout */
+        .hero h1 { font-size: 3.5em; margin: 0 0 10px 0; }
+
+        /* Layout */
         .main-wrapper {
             max-width: 1200px; margin: 40px auto; padding: 0 20px;
             display: grid; grid-template-columns: 3fr 1fr; gap: 30px;
         }
 
-        /* Articles Section */
+        /* Cards */
         .article-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .card {
             background: white; border-radius: 8px; overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s;
         }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
-        .card-img { height: 200px; background: #94a3b8; }
+        .card-img { height: 180px; background: #3b82f6; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px;}
         .card-content { padding: 20px; }
         .card-content h3 { margin-top: 0; color: var(--dark); }
-        
-        /* In-Article Ad Slot */
-        .in-article-ad {
-            grid-column: 1 / -1; background: #fef08a; border: 1px solid #eab308;
-            padding: 30px; text-align: center; border-radius: 8px;
-            color: #ca8a04; font-weight: bold; margin: 10px 0;
+        .read-btn {
+            display: inline-block; background: var(--primary); color: white;
+            padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold;
+            cursor: pointer; border: none; margin-top: 10px;
         }
+        .read-btn:hover { background: #1d4ed8; }
 
-        /* Sidebar */
-        .sidebar-widget {
-            background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        /* Full Article View (Hidden by default) */
+        #article-view { display: none; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .back-btn {
+            background: #64748b; color: white; border: none; padding: 10px 20px;
+            border-radius: 5px; cursor: pointer; font-weight: bold; margin-bottom: 20px;
         }
-        .sidebar-ad {
-            background: #e2e8f0; border: 2px dashed #cbd5e1; height: 600px;
-            display: flex; justify-content: center; align-items: center;
-            color: var(--gray); font-weight: bold; text-align: center;
-        }
+        .back-btn:hover { background: #475569; }
 
-        /* Footer */
-        footer { background: var(--dark); color: white; padding: 40px 20px; text-align: center; margin-top: 40px; }
+        /* Sidebar & Footer */
+        .sidebar-widget { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        footer { background: var(--dark); color: white; padding: 30px 20px; text-align: center; margin-top: 40px; }
     </style>
 </head>
 <body>
 
-    <!-- Header & Menu -->
     <header>
         <div class="nav-container">
-            <div class="logo">ProSculpt Hub</div>
+            <div class="logo" onclick="goHome()">ProSculpt Hub</div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">ZBrush Tutorials</a></li>
-                    <li><a href="#">Figurine Painting</a></li>
-                    <li><a href="#">3D Printing</a></li>
+                    <li><a onclick="goHome()">Home</a></li>
+                    <li><a onclick="alert('Tutorials category jald hi aa rahi hai!')">Tutorials</a></li>
+                    <li><a onclick="alert('Contact form abhi ban raha hai.')">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- AdSense Top Ad Slot -->
-    <div class="top-ad-container">
-        Google AdSense Leaderboard Ad (728x90)<br>
-        <small>Jab site approve hogi, yahan bada banner ad aayega</small>
-    </div>
+    <div class="ad-container top-ad">Google AdSense Top Banner Area</div>
 
-    <!-- Big Hero Section -->
-    <div class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Master The 3D World</h1>
-            <p style="font-size: 1.2em;">Complete guides on modeling, texturing, and commercial production.</p>
+    <div id="home-view">
+        <div class="hero">
+            <div>
+                <h1>Master The 3D World</h1>
+                <p style="font-size: 1.2em;">Complete guides on modeling and commercial production.</p>
+            </div>
+        </div>
+
+        <div class="main-wrapper">
+            <div class="content-area">
+                <h2 style="border-bottom: 2px solid #2563eb; padding-bottom: 10px;">Latest Masterclasses</h2>
+                <div class="article-grid">
+                    
+                    <div class="card">
+                        <div class="card-img" style="background: #3b82f6;">1/7 Scale</div>
+                        <div class="card-content">
+                            <h3>1/7 Scale Figurine Proportions</h3>
+                            <p>Market ready 1/7 scale commercial figurines banane ke liye base mesh aur anatomy ki sahi jankari.</p>
+                            <button class="read-btn" onclick="openArticle('fig')">Read Full Guide →</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-img" style="background: #10b981;">ZBrush</div>
+                        <div class="card-content">
+                            <h3>ZBrush: Organic Modeling Tips</h3>
+                            <p>ZBrush modeling process mein time bachane ke liye DynaMesh aur brushes ka sahi istemaal.</p>
+                            <button class="read-btn" onclick="openArticle('zbrush')">Read Full Guide →</button>
+                        </div>
+                    </div>
+
+                    <div class="ad-container in-article-ad" style="grid-column: 1 / -1;">Google In-Article Ad Area</div>
+
+                    <div class="card">
+                        <div class="card-img" style="background: #f59e0b;">Print</div>
+                        <div class="card-content">
+                            <h3>Exporting for 3D Printing</h3>
+                            <p>ZBrush se STL format mein perfect export karne ke tareeqe taaki print sharp nikle.</p>
+                            <button class="read-btn" onclick="openArticle('print')">Read Full Guide →</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-img" style="background: #ef4444;">Paint</div>
+                        <div class="card-content">
+                            <h3>Painting & Detailing Collectibles</h3>
+                            <p>Airbrush techniques aur hand-painting se apne 3D printed model ko commercial look dein.</p>
+                            <button class="read-btn" onclick="openArticle('paint')">Read Full Guide →</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>About the Author</h3>
+                    <p>Main ek passionate 3D artist hu aur yahan apna scale modeling ka experience share karta hu.</p>
+                </div>
+                <div class="ad-container" style="height: 500px;">Sidebar Ad Area</div>
+            </div>
         </div>
     </div>
 
-    <!-- Main Content Area -->
-    <div class="main-wrapper">
-        
-        <!-- Left Side: Articles -->
+    <!-- Article Reader Section -->
+    <div class="main-wrapper" id="article-wrapper" style="display: none;">
         <div class="content-area">
-            <h2 style="border-bottom: 2px solid #2563eb; padding-bottom: 10px;">Latest Masterclasses</h2>
-            
-            <div class="article-grid">
+            <div id="article-view">
+                <button class="back-btn" onclick="goHome()">← Back to Home</button>
+                <h1 id="art-title" style="color: #0f172a;">Title</h1>
+                <hr>
+                <p id="art-content" style="line-height: 1.8; font-size: 1.1em; color: #475569; margin-top: 20px; white-space: pre-wrap;"></p>
                 
-                <!-- Article 1 -->
-                <div class="card">
-                    <div class="card-img" style="background: #3b82f6;"></div>
-                    <div class="card-content">
-                        <h3>1/7 Scale Figurine Proportions</h3>
-                        <p>Market ready 1/7 scale commercial figurines banane ke liye base mesh aur anatomy ka sahi hona kitna zaroori hai, aaiye step-by-step detail mein samajhte hain.</p>
-                        <a href="#" style="color: #2563eb; font-weight: bold; text-decoration: none;">Read Full Guide →</a>
-                    </div>
-                </div>
-
-                <!-- Article 2 -->
-                <div class="card">
-                    <div class="card-img" style="background: #10b981;"></div>
-                    <div class="card-content">
-                        <h3>ZBrush: Organic Modeling Tips</h3>
-                        <p>ZBrush modeling process mein time bachane ke liye DynaMesh aur ZRemesher ka sahi istemaal kaise karein. Top studio secrets jo aapke kaam aayenge.</p>
-                        <a href="#" style="color: #2563eb; font-weight: bold; text-decoration: none;">Read Full Guide →</a>
-                    </div>
-                </div>
-
-                <!-- AdSense In-Feed Ad Slot -->
-                <div class="in-article-ad">
-                    Google AdSense In-Article Ad<br>
-                    <small>High CPC (Mahange ads) yahan beech mein aayenge</small>
-                </div>
-
-                <!-- Article 3 -->
-                <div class="card">
-                    <div class="card-img" style="background: #f59e0b;"></div>
-                    <div class="card-content">
-                        <h3>Exporting for 3D Printing</h3>
-                        <p>ZBrush se STL format mein kaise export karein taaki print hone par aapke model ki ek-ek detail ekdum sharp aur clear nikle.</p>
-                        <a href="#" style="color: #2563eb; font-weight: bold; text-decoration: none;">Read Full Guide →</a>
-                    </div>
-                </div>
-
-                <!-- Article 4 -->
-                <div class="card">
-                    <div class="card-img" style="background: #ef4444;"></div>
-                    <div class="card-content">
-                        <h3>Painting & Detailing Collectibles</h3>
-                        <p>Airbrush techniques aur hand-painting ka combination use karke apne 3D printed model ko commercial look kaise dein.</p>
-                        <a href="#" style="color: #2563eb; font-weight: bold; text-decoration: none;">Read Full Guide →</a>
-                    </div>
-                </div>
-
+                <div class="ad-container in-article-ad" style="margin-top: 40px;">Bottom Article Ad Area</div>
             </div>
         </div>
-
-        <!-- Right Side: Sidebar & Big Ad -->
         <div class="sidebar">
-            <div class="sidebar-widget">
-                <h3>About the Author</h3>
-                <p>Main ek passionate 3D artist hu aur yahan apna ZBrush aur scale modeling ka experience share karta hu.</p>
-            </div>
-
-            <!-- AdSense Sidebar Big Ad Slot -->
-            <div class="sidebar-ad">
-                Google AdSense Sticky Sidebar Ad (300x600)<br>
-                <small>Ye ad site scroll karne par bhi screen par tika rahega (Maximum Kamai)</small>
-            </div>
+            <div class="ad-container" style="height: 400px;">Sidebar Ad Area</div>
         </div>
-
     </div>
 
-    <!-- Footer -->
     <footer>
         <h2 style="margin-top: 0; color: #60a5fa;">ProSculpt Hub</h2>
-        <p>Your journey to professional 3D art begins here.</p>
-        <p style="color: #94a3b8; font-size: 14px;">© 2026 All Rights Reserved | Privacy Policy | Terms of Service</p>
+        <p>© 2026 All Rights Reserved | Fully Functional Beta</p>
     </footer>
 
+    <!-- JavaScript to make buttons work -->
+    <script>
+        // Website ka Data (Articles)
+        const database = {
+            'fig': {
+                title: '1/7 Scale Figurine Proportions',
+                content: 'Ek high-quality 1/7 scale commercialized figurine banate waqt proportions aur balance sabse zaroori hota hai.\n\nStep 1: Base Mesh\nHamesha ek strong base mesh se shuruat karein. Skeleton setup se lekar final pose tak, har ek measurement precise honi chahiye.\n\nStep 2: Pose & Dynamics\nCharacter ka weight aur gravity par dhyan dein. Kapdo ki folds (cloth dynamics) ko natural dikhana sabse bada challenge hota hai jo aapko seekhna padega.\n\nMarket standards ke hisaab se anatomy balance karna hi aapke model ko professional look deta hai.'
+            },
+            'zbrush': {
+                title: 'Advanced ZBrush Modeling Process',
+                content: 'ZBrush modeling process mein aapka workflow aapki speed tay karta hai.\n\nTips for Speed & Quality:\n1. DynaMesh ka istemaal primary shapes block karne ke liye karein.\n2. Jab detail add karni ho toh ZRemesher se clean topology banayein aur subdivisions badhayein.\n3. Smooth organic surfaces ke liye ClayBuildup aur DamStandard brushes ka combination best hai.\n\nCustom UI banakar apne favorite brushes ko hamesha screen par rakhne se aapka modeling time aadha ho sakta hai.'
+            },
+            'print': {
+                title: 'Exporting Models for 3D Printing',
+                content: 'Apne ZBrush model ko physical duniya mein laane ke liye export setting perfect honi chahiye.\n\n- Decimation Master plugin ka use karke apni high-poly mesh ko optimize karein.\n- STL file export karne se pehle hamesha check karein ki mesh "watertight" hai ya nahi (koi holes nahi hone chahiye).\n- Parts ko keys aur pegs ke sath split karein taaki print hone ke baad assemble karna aasan ho.'
+            },
+            'paint': {
+                title: 'Painting & Detailing Collectibles',
+                content: 'Print nikalne ke baad asli jaan uske paint mein hoti hai.\n\nSabse pehle grey ya white primer ka use karein. Uske baad airbrush se shadow aur highlight ke base coats lagayein. Aankhein aur choti details ke liye hamesha fine-tip brushes (000 size) ka istemaal karein. Wash aur dry-brushing techniques se textures ko pop karna seekhein.'
+            }
+        };
+
+        // Button dabane par Article kholne ka code
+        function openArticle(id) {
+            document.getElementById('home-view').style.display = 'none';
+            document.getElementById('article-wrapper').style.display = 'grid';
+            window.scrollTo(0, 0); // Upar scroll kar dega
+            
+            document.getElementById('art-title').innerText = database[id].title;
+            document.getElementById('art-content').innerText = database[id].content;
+        }
+
+        // Home dabane par wapas aane ka code
+        function goHome() {
+            document.getElementById('home-view').style.display = 'block';
+            document.getElementById('article-wrapper').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 </html>
